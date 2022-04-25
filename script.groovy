@@ -23,6 +23,7 @@ def deployApp() {
     def dockerRunImage = "docker run ${IMAGE_NAME}"
     sshagent(['ec2-ssh-keypair']) {
         sh "ssh -o StrictHostKeyChecking=no ec2-user@13.235.78.154 ${dockerRunImage}"
+    }
 }
 
 return this
