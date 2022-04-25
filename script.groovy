@@ -2,19 +2,12 @@ def testApp() {
     echo "Testing node website"
 }
 
-def buildApp() {
+def buildImage() {
     echo "Building Docker image for Node application"
-    def dockerCreateImage = "docker build -t ${IMAGE_NAME} ."
-    sshagent(['ec2-ssh-keypair']) {
-        sh "ssh -o StrictHostKeyChecking=no ec2-user@13.235.78.154 ${dockerCreateImage}"
-    }
-}
-
-def pushImage() {
-    echo "Pushing newly created Docker image to Dockerhub for node application to ec2"
-    def dockerPushImage = "docker push ${IMAGE_NAME}"
-    sshagent(['ec2-ssh-keypair']) {
-        sh "ssh -o StrictHostKeyChecking=no ec2-user@13.235.78.154 ${dockerPushImage}"
+    withCredentials([usernamePassword(credentialsId: 'dockerhub-credentials', passwordVariable: 'PASSWORD', usernameVariable: 'USERNAME')]) {
+        sh "docker build -t ${IMAGE_NAME} ."
+        sh "echo $PASSWORD | docker login -u $USERNAME --password-stdin"
+        sh "docker push ${IMAGE_NAME}"
     }
 }
 

@@ -23,12 +23,12 @@ pipeline {
             } 
         }
 
-        stage("Building & Pushing Image") {
+        stage("Building Image for Maven website") {
             steps {
                 script {
+                    echo "Building app"
                     env.IMAGE_NAME = "vikas1412/node-website:1.1"
-                    gv.buildApp()
-                    gv.pushImage()
+                    gv.buildImage()
                 }
             }
         }
