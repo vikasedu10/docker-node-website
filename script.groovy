@@ -13,7 +13,7 @@ def buildImage() {
 
 def deployApp() {
     echo "Deploying newly created Docker pushed image from Dockerhub to ec2 by `docker run`"
-    def dockerRunImage = "docker run ${IMAGE_NAME}"
+    def dockerRunImage = "docker run -p 3000:3000 -d ${IMAGE_NAME}"
     sshagent(['ec2-ssh-keypair']) {
         sh "ssh -o StrictHostKeyChecking=no ec2-user@13.235.78.154 ${dockerRunImage}"
     }

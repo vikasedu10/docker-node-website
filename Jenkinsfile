@@ -34,11 +34,11 @@ pipeline {
         }
 
         stage("Deploying to ec2") {
-            when {
-                expression {
-                    BRANCH_NAME = 'main'
-                }
-            }
+            // when {
+            //     expression {
+            //         BRANCH_NAME = 'main'
+            //     }
+            // }
             steps {
                 script {
                     gv.deployApp()
