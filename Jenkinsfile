@@ -27,7 +27,7 @@ pipeline {
             steps {
                 script {
                     echo "Building app"
-                    env.IMAGE_NAME = "vikas1412/node-website:1.1"
+                    env.IMAGE_NAME = "vikas1412/node-website:1.2"
                     gv.buildImage()
                 }
             }
