@@ -1,5 +1,7 @@
 def gv
-
+PUBLIC_IP = "18.206.209.221"
+IMAGE_NAME = "vikas1412/node-website:2.0"
+    
 pipeline {
     agent any
     stages {
@@ -21,7 +23,6 @@ pipeline {
             steps {
                 script {
                     echo "Building app"
-                    env.IMAGE_NAME = "vikas1412/node-website:1.3"
                     gv.buildImage()
                 }
             }
