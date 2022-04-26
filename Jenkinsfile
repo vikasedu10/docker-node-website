@@ -1,7 +1,7 @@
 def gv
-PUBLIC_IP = "18.206.209.221"
+PUBLIC_IP_ENDPOINT = "ec2-user@18.206.209.221"
 IMAGE_NAME = "vikas1412/node-website:2.0"
-    
+
 pipeline {
     agent any
     stages {
