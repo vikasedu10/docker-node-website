@@ -15,8 +15,8 @@ def deployApp() {
     echo "Deploying newly created Docker pushed image from Dockerhub to ec2 using `docker compose`"
     def dockerComposeRunImage = "docker-compose -f docker-compose.yml up --detach"
     sshagent(['ec2-ssh-keypair']) {
-        sh "scp docker-compose.yml ec2-user@18.206.209.221:/home/ec2-user"
-        sh "ssh -o StrictHostKeyChecking=no ec2-user@18.206.209.221 ${dockerRunImage}"
+        sh "scp -o StrictHostKeyChecking=no docker-compose.yml ec2-user@18.206.209.221:/home/ec2-user"
+        sh "ssh -o StrictHostKeyChecking=no ec2-user@18.206.209.221 ${dockerComposeRunImage}"
     }
 }
 
