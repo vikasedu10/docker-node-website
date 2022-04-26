@@ -12,10 +12,11 @@ def buildImage() {
 }
 
 def deployApp() {
-    echo "Deploying newly created Docker pushed image from Dockerhub to ec2 by `docker run`"
-    def dockerRunImage = "docker run -p 3000:3000 -d ${IMAGE_NAME}"
+    echo "Deploying newly created Docker pushed image from Dockerhub to ec2 using `docker compose`"
+    def dockerComposeRunImage = "docker-compose -f docker-compose.yml up --detach"
     sshagent(['ec2-ssh-keypair']) {
-        sh "ssh -o StrictHostKeyChecking=no ec2-user@13.235.78.154 ${dockerRunImage}"
+        sh "scp docker-compose.yml ec2-user@18.206.209.221:/home/ec2-user"
+        sh "ssh -o StrictHostKeyChecking=no ec2-user@18.206.209.221 ${dockerRunImage}"
     }
 }
 

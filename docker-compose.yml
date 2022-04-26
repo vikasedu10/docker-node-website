@@ -1,7 +1,7 @@
 version: "3"
 services:
-  myapp:
-    image: myapp:1.0
+  node-app:
+    image: vikas1412/node-website:1.3
     ports:
       - 3000:3000
   mongodb:
@@ -9,15 +9,15 @@ services:
     ports:
       - 27017:27017
     environment:
-      - MONGO_INITDB_ROOT_USERNAME=admin
-      - MONGO_INITDB_ROOT_PASSWORD=vikas
+      - MONGO_INITDB_ROOTUSERNAME=admin
+      - MONGO_INITDB_ROOTPASSWORD=vikas
     volumes:
-      - mongodb-voulme:/data/db
-  
+      - mongodb-volume:/data/db
   mongo-express:
     image: mongo-express
+    # restart: always
     ports:
-      - 8080:8081
+      - 8081:8081
     environment:
       - ME_CONFIG_MONGODB_ADMINUSERNAME=admin
       - ME_CONFIG_MONGODB_ADMINPASSWORD=vikas
@@ -25,5 +25,5 @@ services:
     restart: unless-stopped
 
 volumes:
-  mongodb-voulme:
+  mongodb-volume:
     driver: local
