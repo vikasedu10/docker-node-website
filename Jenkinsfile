@@ -7,7 +7,7 @@ pipeline {
     agent any
     environment {
         PUBLIC_IP_ENDPOINT = "ec2-user@18.206.209.221"
-        IMAGE_NAME = "vikas1412/node-website:2.0"
+        IMAGE_NAME = "vikas1412/node-website:3.0"
     }
     stages {
         stage("Initialize groovy") {
@@ -28,7 +28,7 @@ pipeline {
             steps {
                 script {
                     echo "Building app"
-                    gv.buildImage()
+                    gv.buildImage(${IMAGE_NAME})
                 }
             }
         }
