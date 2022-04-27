@@ -28,7 +28,7 @@ pipeline {
             steps {
                 script {
                     echo "Building app"
-                    buildImage()
+                    buildImage("${IMAGE_NAME}")
                 }
             }
         }
