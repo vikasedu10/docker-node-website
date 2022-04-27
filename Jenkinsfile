@@ -20,7 +20,7 @@ pipeline {
         stage("Testing") {
             steps {
                 script {
-                    testApp()
+                    gv.testApp()
                 }
             } 
         }
@@ -28,7 +28,7 @@ pipeline {
             steps {
                 script {
                     echo "Building app"
-                    buildImage()
+                    gv.buildImage()
                 }
             }
         }
