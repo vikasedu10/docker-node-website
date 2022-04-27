@@ -1,3 +1,4 @@
+/* 
 def testApp() {
     echo "Testing node website"
 }
@@ -10,6 +11,7 @@ def buildImage() {
         sh "docker push ${env.IMAGE_NAME}"
     }
 }
+*/
 
 def deployApp() {
     echo "Deploying newly created Docker pushed image from Dockerhub to ec2 using `docker compose`"
