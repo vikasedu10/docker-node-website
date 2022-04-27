@@ -28,7 +28,7 @@ pipeline {
             steps {
                 script {
                     echo "Building app"
-                    buildImage 'vikas1412/node-website:3.0'
+                    buildImage()
                 }
             }
         }
