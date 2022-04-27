@@ -29,6 +29,8 @@ pipeline {
                 script {
                     echo "Building app"
                     buildImage("${IMAGE_NAME}")
+                    dockerLogin()
+                    dockerPush("${IMAGE_NAME}")
                 }
             }
         }
